@@ -35,7 +35,7 @@ function createScene() {
 
   // Add a fog effect to the scene; same color as the
   // background color used in the style sheet
-  scene.fog = new THREE.Fog(0x787878, 100, 950);
+  scene.fog = new THREE.Fog(0x404078, 400, 950);
 
   // Create the camera
   aspectRatio = WIDTH / HEIGHT;
@@ -51,7 +51,7 @@ function createScene() {
 
   // Set the position of the camera
   camera.position.z = 200;
-  camera.position.y = 900;
+  camera.position.y = 1820;
 
   // Create the renderer
   renderer = new THREE.WebGLRenderer({
@@ -118,21 +118,21 @@ function createLights() {
   // A hemisphere light is a gradient colored light;
   // the first parameter is the sky color, the second parameter is the ground color,
   // the third parameter is the intensity of the light
-  hemisphereLight = new THREE.HemisphereLight(0xdddddd, 0x000000, .9);
+  hemisphereLight = new THREE.HemisphereLight(0xdddddd, 0x222222, .9);
 
   // an ambient light modifies the global color of a scene and makes the shadows softer
-  ambientLight = new THREE.AmbientLight(0xFFFFFF, .2);
+  ambientLight = new THREE.AmbientLight(0xFFFFFF, .6);
   scene.add(ambientLight);
 
   // A directional light shines from a specific direction.
   // It acts like the sun, that means that all the rays produced are parallel.
-  shadowLight = new THREE.DirectionalLight(0xffffff, .9);
+  shadowLight = new THREE.DirectionalLight(0xefffd1, 1.9);
 
   // Set the direction of the light
-  shadowLight.position.set(50, 150, 150);
+  shadowLight.position.set(300, 850, 650);
 
   // Allow shadow casting
-  shadowLight.castShadow = true;
+  shadowLight.castShadow = false;
 
   // define the visible area of the projected shadow
   shadowLight.shadow.camera.left = -400;
@@ -152,95 +152,7 @@ function createLights() {
   scene.add(shadowLight);
 }
 
-// First let's define a Sea object :
-Sea = function() {
-  var geom = new THREE.CylinderGeometry(600, 600, 800, 40, 10);
-  geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 40));
 
-  // important: by merging vertices we ensure the continuity of the waves
-  geom.mergeVertices();
-
-  // get the vertices
-  var l = geom.vertices.length;
-
-  // create an array to store new data associated to each vertex
-  this.waves = [];
-
-  for (var i = 0; i < l; i++) {
-    // get each vertex
-    var v = geom.vertices[i];
-
-    // store some data associated to it
-    this.waves.push({
-      y: v.y,
-      x: v.x,
-      z: v.z,
-      // a random angle
-      ang: Math.random() * Math.PI * 2,
-      // a random distance
-      amp: 5 + Math.random() * 15,
-      // a random speed between 0.016 and 0.048 radians / frame
-      speed: 0.016 + Math.random() * 0.032
-    });
-  };
-  var mat = new THREE.MeshPhongMaterial({
-    color: Colors.blue,
-    transparent: true,
-    opacity: .8,
-    shading: THREE.FlatShading,
-  });
-
-  this.mesh = new THREE.Mesh(geom, mat);
-  this.mesh.receiveShadow = true;
-
-}
-
-// now we create the function that will be called in each frame
-// to update the position of the vertices to simulate the waves
-
-Sea.prototype.moveWaves = function() {
-
-  // get the vertices
-  var verts = this.mesh.geometry.vertices;
-  var l = verts.length;
-
-  for (var i = 0; i < l; i++) {
-    var v = verts[i];
-
-    // get the data associated to it
-    var vprops = this.waves[i];
-
-    // update the position of the vertex
-    v.x = vprops.x + Math.cos(vprops.ang) * vprops.amp;
-    v.y = vprops.y + Math.sin(vprops.ang) * vprops.amp;
-
-    // increment the angle for the next frame
-    vprops.ang += vprops.speed;
-
-  }
-
-  // Tell the renderer that the geometry of the sea has changed.
-  // In fact, in order to maintain the best level of performance,
-  // three.js caches the geometries and ignores any changes
-  // unless we add this line
-  this.mesh.geometry.verticesNeedUpdate = true;
-
-  sea.mesh.rotation.z += .005;
-}
-
-// Instantiate the sea and add it to the scene:
-
-var sea;
-
-function createSea() {
-  sea = new Sea();
-
-  // push it a little bit at the bottom of the scene
-  sea.mesh.position.y = -600;
-
-  // add the mesh of the sea to the scene
-  scene.add(sea.mesh);
-}
 
 Cloud = function() {
   // Create an empty container that will hold the different parts of the cloud
@@ -248,11 +160,25 @@ Cloud = function() {
 
   // create a cube geometry;
   // this shape will be duplicated to create the cloud
-  var geom = new THREE.BoxGeometry(40, 40, 40);
+
+  var flag = Math.random();
+
+  if(flag < 0.85){
+      var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
+  }
+  else if(flag > 0.85 && flag < 0.995){
+      var geom = new THREE.OctahedronBufferGeometry(15+Math.random()*6);
+  }
+  else if(flag > 0.995) {
+      var geom = new THREE.DodecahedronBufferGeometry(50+Math.random()*20);
+  }
 
   // create a material; a simple white material will do the trick
-  var mat = new THREE.MeshPhongMaterial({
-    color: 0x666666,
+  var mat = new THREE.MeshStandardMaterial({
+    color: 0x8b95c4,
+    specular: 0xe2ffcc,
+    shininess: 80,
+
   });
 
   // duplicate the geometry a random number of times
@@ -261,6 +187,8 @@ Cloud = function() {
 
     // create the mesh by cloning the geometry
     var m = new THREE.Mesh(geom, mat);
+
+
 
     // set the position and the rotation of each cube randomly
     m.position.x = i * 15;
@@ -288,7 +216,7 @@ Sky = function() {
   this.mesh = new THREE.Object3D();
 
   // choose a number of clouds to be scattered in the sky
-  this.nClouds = 80;
+  this.nClouds = 3000;
 
   // To distribute the clouds consistently,
   // we need to place them according to a uniform angle
@@ -301,7 +229,7 @@ Sky = function() {
     // set the rotation and the position of each cloud;
     // for that we use a bit of trigonometry
     var a = stepAngle * i; // this is the final angle of the cloud
-    var h = 1350 + Math.random() * 400; // this is the distance between the center of the axis and the cloud itself
+    var h = 2250 + Math.random() * 400; // this is the distance between the center of the axis and the cloud itself
 
     // Trigonometry!!! I hope you remember what you've learned in Math :)
     // in case you don't:
@@ -322,8 +250,8 @@ Sky = function() {
   }*/
 
 
-    var s = 1 + Math.random() * 2;
-    c.mesh.scale.set(s, s, s);
+  //  var s = 1 + Math.random() * 2;
+  //  c.mesh.scale.set(s, s, s);
 
     // do not forget to add the mesh of each cloud in the scene
     this.mesh.add(c.mesh);
@@ -341,106 +269,12 @@ function createSky() {
   scene.add(sky.mesh);
 }
 
-var AirPlane = function() {
-
-  this.mesh = new THREE.Object3D();
-
-  // Create the cabin
-  var geomCockpit = new THREE.BoxGeometry(60, 50, 50, 1, 1, 1);
-  var matCockpit = new THREE.MeshPhongMaterial({
-    color: Colors.red,
-    shading: THREE.FlatShading
-  });
-  // we can access a specific vertex of a shape through
-  // the vertices array, and then move its x, y and z property:
-  geomCockpit.vertices[4].y -= 10;
-  geomCockpit.vertices[4].z += 20;
-  geomCockpit.vertices[5].y -= 10;
-  geomCockpit.vertices[5].z -= 20;
-  geomCockpit.vertices[6].y += 30;
-  geomCockpit.vertices[6].z += 20;
-  geomCockpit.vertices[7].y += 30;
-  geomCockpit.vertices[7].z -= 20;
-
-  var cockpit = new THREE.Mesh(geomCockpit, matCockpit);
-  cockpit.castShadow = true;
-  cockpit.receiveShadow = true;
-  this.mesh.add(cockpit);
-
-  // Create the engine
-  var geomEngine = new THREE.BoxGeometry(20, 50, 50, 1, 1, 1);
-  var matEngine = new THREE.MeshPhongMaterial({
-    color: Colors.white,
-    shading: THREE.FlatShading
-  });
-  var engine = new THREE.Mesh(geomEngine, matEngine);
-  engine.position.x = 40;
-  engine.castShadow = true;
-  engine.receiveShadow = true;
-  this.mesh.add(engine);
-
-  // Create the tail
-  var geomTailPlane = new THREE.BoxGeometry(15, 20, 5, 1, 1, 1);
-  var matTailPlane = new THREE.MeshPhongMaterial({
-    color: Colors.red,
-    shading: THREE.FlatShading
-  });
-  var tailPlane = new THREE.Mesh(geomTailPlane, matTailPlane);
-  tailPlane.position.set(-35, 25, 0);
-  tailPlane.castShadow = true;
-  tailPlane.receiveShadow = true;
-  this.mesh.add(tailPlane);
-
-  // Create the wing
-  var geomSideWing = new THREE.BoxGeometry(40, 8, 150, 1, 1, 1);
-  var matSideWing = new THREE.MeshPhongMaterial({
-    color: Colors.red,
-    shading: THREE.FlatShading
-  });
-  var sideWing = new THREE.Mesh(geomSideWing, matSideWing);
-  sideWing.castShadow = true;
-  sideWing.receiveShadow = true;
-  this.mesh.add(sideWing);
-
-  // // propeller
-  // var geomPropeller = new THREE.BoxGeometry(20, 10, 10, 1, 1, 1);
-  // var matPropeller = new THREE.MeshPhongMaterial({
-  //   color: Colors.brown,
-  //   shading: THREE.FlatShading
-  // });
-  // this.propeller = new THREE.Mesh(geomPropeller, matPropeller);
-  // this.propeller.castShadow = true;
-  // this.propeller.receiveShadow = true;
-
-  // blades
-  var geomBlade = new THREE.BoxGeometry(1, 100, 20, 1, 1, 1);
-  var matBlade = new THREE.MeshPhongMaterial({
-    color: Colors.brownDark,
-    shading: THREE.FlatShading
-  });
-
-  var blade = new THREE.Mesh(geomBlade, matBlade);
-  blade.position.set(8, 0, 0);
-  blade.castShadow = true;
-  blade.receiveShadow = true;
-  // this.propeller.add(blade);
-  // this.propeller.position.set(50, 0, 0);
-  //this.mesh.add(this.propeller);
-};
-var airplane;
-
-function createPlane() {
-  // airplane = new AirPlane();
-  // airplane.mesh.scale.set(.25, .25, .25);
-  // airplane.mesh.position.y = 100;
-  //scene.add(airplane.mesh);
-}
 
 function loop() {
   // Rotate the propeller, the sea and the sky
   //airplane.propeller.rotation.x += 0.3;
   //sea.mesh.rotation.z += .005;
-  sky.mesh.rotation.z += .01;
+  sky.mesh.rotation.z += .0004;
 
   // update the plane on each frame
 
