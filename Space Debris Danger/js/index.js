@@ -162,16 +162,27 @@ Cloud = function() {
   // this shape will be duplicated to create the cloud
 
   var flag = Math.random();
-
-  if(flag < 0.85){
+// proporzioni fedeli
+  if(flag < 0.992){
       var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
   }
-  else if(flag > 0.85 && flag < 0.995){
-      var geom = new THREE.OctahedronBufferGeometry(15+Math.random()*6);
+  else if(flag > 0.992 && flag < 0.997){
+      var geom = new THREE.OctahedronBufferGeometry(25+Math.random()*10);
   }
-  else if(flag > 0.995) {
+  else if(flag > 0.997) {
       var geom = new THREE.DodecahedronBufferGeometry(50+Math.random()*20);
   }
+
+  // bellino da vedere
+  /*  if(flag < 0.86){
+        var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
+    }
+    else if(flag > 0.86 && flag < 0.995){
+        var geom = new THREE.OctahedronBufferGeometry(25+Math.random()*10);
+    }
+    else if(flag > 0.995) {
+        var geom = new THREE.DodecahedronBufferGeometry(50+Math.random()*20);
+    } */
 
   // create a material; a simple white material will do the trick
   var mat = new THREE.MeshStandardMaterial({
