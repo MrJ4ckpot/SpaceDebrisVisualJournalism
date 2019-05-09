@@ -6,7 +6,13 @@ var Colors = {
 
 window.addEventListener('load', init, false);
 
+
+
 function init() {
+
+//  var textureLoader = new THREE.TextureLoader();
+//  bumpTexture = new textureLoader.load("texture/bump1.jpg");
+
   createScene();
   createLights();
 
@@ -126,10 +132,10 @@ function createLights() {
 
   // A directional light shines from a specific direction.
   // It acts like the sun, that means that all the rays produced are parallel.
-  shadowLight = new THREE.DirectionalLight(0xefffd1, 1.9);
+  shadowLight = new THREE.DirectionalLight(0xefffd1, 4);
 
   // Set the direction of the light
-  shadowLight.position.set(300, 850, 650);
+  shadowLight.position.set(900, 2250, 1650);
 
   // Allow shadow casting
   shadowLight.castShadow = false;
@@ -158,11 +164,16 @@ Cloud = function() {
   // Create an empty container that will hold the different parts of the cloud
   this.mesh = new THREE.Object3D();
 
+
+
+//  var mapHeight = new THREE.TextureLoader().load( "texture/bump1.jpg" );
+
   // create a cube geometry;
   // this shape will be duplicated to create the cloud
 
   var flag = Math.random();
 // proporzioni fedeli
+/*
   if(flag < 0.992){
       var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
   }
@@ -171,24 +182,28 @@ Cloud = function() {
   }
   else if(flag > 0.997) {
       var geom = new THREE.DodecahedronBufferGeometry(50+Math.random()*20);
-  }
+  }   */
 
   // bellino da vedere
-  /*  if(flag < 0.86){
+    if(flag < 0.96){
         var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
     }
-    else if(flag > 0.86 && flag < 0.995){
-        var geom = new THREE.OctahedronBufferGeometry(25+Math.random()*10);
+    else if(flag > 0.96 && flag < 0.995){
+        var geom = new THREE.OctahedronBufferGeometry(15+Math.random()*5);
     }
     else if(flag > 0.995) {
-        var geom = new THREE.DodecahedronBufferGeometry(50+Math.random()*20);
-    } */
+        var geom = new THREE.DodecahedronBufferGeometry(30+Math.random()*10);
+    }
 
   // create a material; a simple white material will do the trick
   var mat = new THREE.MeshStandardMaterial({
-    color: 0x8b95c4,
-    specular: 0xe2ffcc,
+    color: 0x4b5e5c,
+    specular: 0xccffa5,
     shininess: 80,
+    reflectivity: 50
+  //  metalness: .3
+  //  bumpMap: bumpTexture,
+//	  bumpScale: .2
 
   });
 
@@ -296,15 +311,4 @@ function loop() {
 
   // call the loop function again
   requestAnimationFrame(loop);
-}
-
-
-
-function normalize(v, vmin, vmax, tmin, tmax) {
-  var nv = Math.max(Math.min(v, vmax), vmin);
-  var dv = vmax - vmin;
-  var pc = (nv - vmin) / dv;
-  var dt = tmax - tmin;
-  var tv = tmin + (pc * dt);
-  return tv;
 }
