@@ -65,10 +65,10 @@ background: #00234c;
 
 	font-weight: 700;
 	font-style: italic;
+	padding-left: 45px;
 }
 
 .textbox {
-	position: relative;
 	padding-top: 150px;
 }
 
@@ -76,7 +76,7 @@ background: #00234c;
 	font-family: "Space Mono";
   color: #9ccbd8;
   font-size: 14px;
-	width: 60%;
+	width: 50%;
 
 	font-style: normal;
 

@@ -186,18 +186,18 @@ Cloud = function() {
 
   // bellino da vedere
     if(flag < 0.96){
-        var geom = new THREE.TetrahedronBufferGeometry(6+Math.random()*3);
+        var geom = new THREE.TetrahedronBufferGeometry(4+Math.random()*3);
     }
     else if(flag > 0.96 && flag < 0.995){
-        var geom = new THREE.OctahedronBufferGeometry(15+Math.random()*5);
+        var geom = new THREE.OctahedronBufferGeometry(12+Math.random()*6);
     }
     else if(flag > 0.995) {
-        var geom = new THREE.DodecahedronBufferGeometry(30+Math.random()*10);
+        var geom = new THREE.DodecahedronBufferGeometry(20+Math.random()*10);
     }
 
   // create a material; a simple white material will do the trick
   var mat = new THREE.MeshStandardMaterial({
-    color: 0x4b5e5c,
+    color: 0x757575,
     specular: 0xccffa5,
     shininess: 80,
     reflectivity: 50
@@ -228,7 +228,7 @@ Cloud = function() {
     m.scale.set(s, s, s);
 
     // allow each cube to cast and to receive shadows
-    m.castShadow = true;
+  //  m.castShadow = true;
     m.receiveShadow = true;
 
     // add the cube to the container we first created
@@ -242,7 +242,7 @@ Sky = function() {
   this.mesh = new THREE.Object3D();
 
   // choose a number of clouds to be scattered in the sky
-  this.nClouds = 3000;
+  this.nClouds = 6000;
 
   // To distribute the clouds consistently,
   // we need to place them according to a uniform angle
@@ -255,7 +255,7 @@ Sky = function() {
     // set the rotation and the position of each cloud;
     // for that we use a bit of trigonometry
     var a = stepAngle * i; // this is the final angle of the cloud
-    var h = 2250 + Math.random() * 400; // this is the distance between the center of the axis and the cloud itself
+    var h = 2350 + Math.random() * 160; // this is the distance between the center of the axis and the cloud itself
 
     // Trigonometry!!! I hope you remember what you've learned in Math :)
     // in case you don't:
@@ -268,7 +268,7 @@ Sky = function() {
 
     // for a better result, we position the clouds
     // at random depths inside of the scene
-    c.mesh.position.z = -200 - Math.random() * 600;
+    c.mesh.position.z =  50 - Math.random() * 1000;
 
     // we also set a random scale for each cloud
   /*  if (Math.random()>(0.7)){
