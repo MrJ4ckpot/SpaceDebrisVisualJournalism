@@ -1,7 +1,3 @@
-
-
-
-
 var Colors = {
   red: 0xf25346,
   white: 0xdddddd,
@@ -83,7 +79,7 @@ function createScene() {
 
   // Add the DOM element of the renderer to the
   // container we created in the HTML
-  container = document.getElementById('world');
+  container = document.getElementById('dlrow');
   container.appendChild(renderer.domElement);
 
   // Listen to the screen: if the user resizes it
@@ -192,20 +188,18 @@ Cloud = function() {
         var geom = new THREE.TetrahedronBufferGeometry(4+Math.random()*3);
     }
     else if(flag > 0.96 && flag < 0.997){
-      //  var geom = createGem();
-        var geom = new THREE.OctahedronBufferGeometry(6+Math.random()*6);
+        var geom = new THREE.OctahedronBufferGeometry(12+Math.random()*6);
     }
     else if(flag > 0.997) {
-      //  var geom = createGem();
-        var geom = new THREE.DodecahedronBufferGeometry(10+Math.random()*10);
+        var geom = new THREE.DodecahedronBufferGeometry(20+Math.random()*15);
     }
 
   // create a material; a simple white material will do the trick
-  var mat = new THREE.MeshPhongMaterial({
-    color: 0x333333,
+  var mat = new THREE.MeshStandardMaterial({
+    color: 0x444444,
     specular: 0xccffa5,
-    shininess: 30,
-    reflectivity: 20
+    shininess: 80,
+    reflectivity: 50
   //  metalness: .3
   //  bumpMap: bumpTexture,
 //	  bumpScale: .2
@@ -247,7 +241,7 @@ Sky = function() {
   this.mesh = new THREE.Object3D();
 
   // choose a number of clouds to be scattered in the sky
-  this.nClouds = 8000;
+  this.nClouds = 6000;
 
   // To distribute the clouds consistently,
   // we need to place them according to a uniform angle

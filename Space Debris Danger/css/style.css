@@ -9,6 +9,9 @@
 	overflow: hidden;
   z-index:-1000;
 	background: linear-gradient(#2c003f, #00234c);
+
+	position: fixed;
+
 }
 
 body {
@@ -26,7 +29,6 @@ background: #00234c;
 
 	align-items: center;
 
-  position: absolute;
   width: 100%;
 }
 
@@ -39,7 +41,7 @@ background: #00234c;
 	font-weight: 100;
 	font-style: normal;
 
-  margin-top: 10vw;
+  margin-top: 8vw;
   margin-left: auto;
   margin-right: auto;
 }
@@ -53,9 +55,9 @@ background: #00234c;
 	font-weight: 700;
 	font-style: italic;
 
-  margin-top: 26vw;
   margin-left: auto;
   margin-right: auto;
+	margin-bottom: 26vw;
 }
 
 .titolo{
@@ -74,24 +76,49 @@ background: #00234c;
 
 .corpo{
 	font-family: "Space Mono";
-  color: #9ccbd8;
-  font-size: 14px;
-	width: 50%;
+  /*color: #9ccbd8; */
+	color: white;
+  font-size: 16px;
+	width: 40%;
 
 	font-style: normal;
 
-  margin-top: 20px;
+  margin-top: 40px;
+	margin-bottom: 40px;
 }
 
-strong{
-	color:white;
+.didascalia{
+	font-size: 30px;
+	font-style: italic;
+	font-family: "GT America Compressed";
+	color: white;
+	text-align: center;
 }
 
 .terra{
-width: 300vw;
-z-index: -500;
+width: 100%;
+height: 400vw;
 
-margin-right: -100vw;
-margin-top:500px;
-margin-left: -100vw
+padding-top: 0px;
+
+position: relative;
+
+background-color: #29377C;
+
+}
+
+.grafico1{
+width: 100%;
+
+position: relative;
+margin-top: 25vw;
+padding-bottom: 0px;
+
+margin-top: 26vw;
+
+}
+
+.corposky{
+	background: rgba(36, 135, 109, .5);
+	padding: 60px;
 }

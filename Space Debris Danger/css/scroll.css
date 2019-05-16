@@ -1,0 +1,15 @@
+.parallax-slide {
+  height: 100vh;
+}
+.content-slide {
+  height: 100vh;
+  background: #fff;
+  text-align: center;
+}
+h1 {
+  padding-top: 10%;
+}
+
+#parallax{
+  background: -moz-element(#world);;
+}
