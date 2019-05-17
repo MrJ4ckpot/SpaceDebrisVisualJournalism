@@ -1,0 +1,213 @@
+#caricamento {
+
+	width: 100%;
+	height: 100%;
+
+	position: fixed;
+	z-index: 1000000000000;
+	align-items: center;
+
+	background: linear-gradient(#2c003f, #00234c);
+}
+
+.carica{
+  font-family: "GT America Compressed";
+  color: white;
+  font-size: 3vw;
+  text-align: center;
+
+	font-weight: 100;
+	font-style: normal;
+
+  margin-top: 40vh;
+	position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.load{
+	border: 5px solid #4f6aef;
+  border-radius: 50%;
+  border-top: 5px solid white;
+
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin .5s linear infinite;
+  animation: spin .5s linear infinite;
+
+  margin-top: 50vh;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+#parallax{}
+
+
+#world {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+  z-index:-1000;
+	background: linear-gradient(#2c003f, #00234c);
+
+	position: fixed;
+
+}
+
+body {
+background: #00234c;
+}
+
+.flexbox-container {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+
+  position: absolute;
+  width: 100%;
+}
+
+#header{
+	text-align: center;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+
+}
+#header h1,h3{
+	font-family: "GT America Compressed Ultra";
+display: block;
+color: white;
+font-size: 20rem;
+letter-spacing: 0;
+}
+h3{
+	font-size: 5rem;
+
+}
+#header h2{
+	font-family: "GT America Extended Ultra";
+	display: block;
+	color: white;
+	font-size: 1.6rem;
+	text-transform: uppercase;
+	letter-spacing: 1rem;
+	position: relative;
+	top: -23rem;
+}
+#header div{
+	display: block;
+	margin: auto;
+}
+#header p{
+	position: relative;
+	top: 26vh;
+	text-transform: uppercase;
+	font-size: 1.1rem;
+	letter-spacing: 0.6rem;
+}
+.header1{
+  font-family: "GT America Compressed";
+  color: white;
+  font-size: 13vw;
+  text-align: center;
+
+	font-weight: 100;
+	font-style: normal;
+
+  margin-top: 10vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header2{
+  font-family: "GT America Compressed";
+  color: #9ccbd8;
+  font-size: 4.5vw;
+  text-align: center;
+
+	font-weight: 700;
+	font-style: italic;
+
+  margin-top: 26vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .titolo{
+	font-family: "GT America Compressed";
+  color: white;
+  font-size: 46px;
+
+	font-weight: 700;
+	font-style: italic;
+	padding-left: 45px;
+} */
+
+.textbox {
+	padding-top: 150px;
+}
+
+.corpo{
+	font-family: "Space Mono";
+  color: #9ccbd8;
+  font-size: 16px;
+	font-style: normal;
+  margin-top: 20px;
+}
+
+.muro{
+		margin-top: 180px;
+}
+
+#continua {
+	font-family: "Space Mono";
+  color: #9ccbd8;
+  font-size: 1.6rem;
+	font-style: normal;
+  margin-top: 8px;
+	margin-bottom: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	letter-spacing: 1.5rem;
+}
+
+strong{
+	color:white;
+}
+
+#pianeta{
+
+background: rgba(49,39,130,1);
+background: -moz-linear-gradient(left, rgba(49,39,130,1) 0%, rgba(0,35,76,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(49,39,130,1)), color-stop(100%, rgba(0,35,76,1)));
+background: -webkit-linear-gradient(left, rgba(49,39,130,1) 0%, rgba(0,35,76,1) 100%);
+background: -o-linear-gradient(left, rgba(49,39,130,1) 0%, rgba(0,35,76,1) 100%);
+background: -ms-linear-gradient(left, rgba(49,39,130,1) 0%, rgba(0,35,76,1) 100%);
+background: linear-gradient(to right, rgba(49,39,130,1) 0%, rgba(0,35,76,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#312782', endColorstr='#00234c', GradientType=1 );
+}
+#pianeta .terra{
+width: 100%;
+z-index: -500;
+
+}

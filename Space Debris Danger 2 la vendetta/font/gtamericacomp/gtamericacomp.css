@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedRegular.woff2') format('woff2'),
+        url('GTAmerica-CompressedRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedBlack.woff2') format('woff2'),
+        url('GTAmerica-CompressedBlack.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedLightItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedLightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedBlackItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedBlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedLight.woff2') format('woff2'),
+        url('GTAmerica-CompressedLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedThinItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedBoldItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedBold.woff2') format('woff2'),
+        url('GTAmerica-CompressedBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedMediumItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedMediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedRegularItalic.woff2') format('woff2'),
+        url('GTAmerica-CompressedRegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedThin.woff2') format('woff2'),
+        url('GTAmerica-CompressedThin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed';
+    src: url('GTAmerica-CompressedMedium.woff2') format('woff2'),
+        url('GTAmerica-CompressedMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Extended Ultra';
+    src: url('GTAmerica-ExtendedUltraLight.woff2') format('woff2'),
+        url('GTAmerica-ExtendedUltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America Compressed Ultra';
+    src: url('GTAmerica-CompressedUltraLight.woff2') format('woff2'),
+        url('GTAmerica-CompressedUltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}

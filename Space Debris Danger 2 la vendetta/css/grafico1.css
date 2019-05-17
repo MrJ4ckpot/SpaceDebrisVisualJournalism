@@ -1,0 +1,72 @@
+#PAESE{
+  display: none;
+
+}
+
+#PROPRIETA{
+  display: none;
+
+}
+
+#UTILIZZO{
+
+
+}
+
+#pulsanteViola{
+transition: 0.3s;
+}
+
+#pulsanteViola:hover{
+  fill: #8d63ff;
+  stroke-width: 4;
+}
+
+#pulsanteVerde{
+transition: 0.3s;
+}
+
+#pulsanteVerde:hover{
+  fill: #93ffc9;
+  stroke-width: 4;
+}
+
+#pulsanteGiallo{
+transition: 0.3s;
+}
+
+#pulsanteGiallo:hover{
+  fill: #b7bee0;
+  stroke-width: 4;
+}
+
+.tVerde{
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: overline solid;
+
+}
+
+.tGiallo{
+  font-weight: 300;
+  color: #b7bee0;
+    text-decoration: none;
+}
+
+.tViola{
+  font-weight: 300;
+  color: #b7bee0;
+    text-decoration: none;
+}
+
+
+.spicchio{
+  opacity: .7;
+  transition: 0.3s;
+}
+
+.spicchio:hover{
+  opacity: 1;
+}
+
+#altezza{}
